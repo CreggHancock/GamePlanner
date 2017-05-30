@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WebApp Home Page</title>
+</head>
+<body ng-controller="WelcomeCtrl">
+
+<nav id="tasks" class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a href="#" class="navbar-brand">GamePlanner</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#/welcome">Home</a></li>
+			<li><a href="#/addPost">Add Task</a></li>
+			<li ng-click="logout()"><a href="#">Logout</a></li>
+		</ul>
+	</div>
+</nav>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h3>{{username}}'s GamePlanner</h3>
+		</div>
+	</div>
+	<div>
+
+</div>
+
+
+<div class="container relativepos">
+	<select id="typeSelector" class="form-control col-md-3" ng-model="tt">
+		<option value="">All</option>
+		<option value="Programming">Programming</option>
+		<option value="Art">Art</option>
+		<option value="Design">Design</option>
+	</select><br><br>
+	<div "rowoverlay">
+		<div class="row" ng-repeat="article in articles| filter:tt | orderBy: 'date'">
+			<div id="tasks" class=" well well-sm">
+			<p id="taskTitle" class="pull-right">{{article.type}}</p>
+			<h4>{{article.title}}</h4>
+			<p>{{article.post}}</p>
+			<p>Deadline: {{article.date | date : "MM-dd-yy" }}</p>
+			<button type="submit" class="btn btn-sm btn-primary outline" ng-click="editPost(article.$id)" data-target="#editModal" data-toggle="modal">Edit</button>
+			<button type="submit" class="btn btn-sm btn-primary outline" ng-click="deleteCnf(article)" data-target="#deleteModal" data-toggle="modal">Delete</button>
+		</div>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+	<div id="editModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4>Edit Task Details</h4>
+				</div>
+				<div class="modal-body">
+					<form role="form">
+						<div class="form-group">
+							<label for="title">Task</label>
+							<input type="text" name="title" class="form-control" ng-model="editPostData.title" />
+						</div>
+						<div class="form-group">
+							<label for="post">Details</label>
+							<textarea name="post" class="form-control" ng-model="editPostData.post"></textarea>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-sm btn-primary" ng-click="updatePost(editPostData.$id)">Update Task</button>
+					<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div id="deleteModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header"></div>
+				<div class="modal-body">
+					<p>Are you sure you want to delete the task?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-sm btn-danger" ng-click="deletePost(deleteArticle)">Delete</button>
+					<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+/* app css stylesheet */
+
+body {
+  background-color: #000000;
+  color: white;
+}
+
+.navbar navbar-inverse {
+  background-color: #3b6845;
+
+}
+
+.jumbotron {
+  background-color: #3b6845;
+}
+
+#tasks {
+  background-color: #3b6845;
+  color: white;
+}
+
+#post {
+padding: 25px 25px 25px 50px;
+background-color: #3b6845;
+color: white;
+border: 2px solid white;
+border-radius: 2px;
+}
+
+#editModal {
+  color: black;
+}
+
+#deleteModal{
+  color: black;
+}
+
+#radio{
+  font-size: 10px;
+}
+#typeSelector{
+  width: 300px;
+  height: 35px;
+  background-color: #3b6845;
+  color: white;
+}
+#taskTitle{
+  font-size: 12px;
+  color: #638b8e;
+}
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid #black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+
+.btn {
+    padding: 7px 14px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+.btn-primary {
+    background: #0099cc;
+    color: #ffffff;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #33a6cc;
+}
+
+.btn-primary:active, .btn-primary.active {
+    background: #007299;
+    box-shadow: none;
+}
+.btn.outline {
+	background: none;
+	padding: 12px 18px;
+}
+
+.btn-primary.outline {
+	border: 2px solid #000000;
+	color: #000000;
+}
+.btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
+  background: white;
+  color: black;
+	border-color: black;
+}
+.btn-primary.outline:active, .btn-primary.outline.active {
+  background: white;
+  border-color: black;
+	color: black;
+	box-shadow: none;
+}
+
+.btn-success {
+    background: #3b6845;
+    color: #ffffff;
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open > .dropdown-toggle.btn-primary {
+    background: #3b6845;
+}
+
+.btn-success:active, .btn-success.active {
+    background: #3b6845;
+    box-shadow: none;
+}
+.btn.outline {
+	background: #3b6845;
+	padding: 2px 7px;
+}
+
+.btn-success.outline {
+	border: 2px solid #000000;
+	color: #000000;
+}
+.btn-success.outline:hover, .btn-success.outline:focus, .btn-success.outline:active, .btn-success.outline.active, .open > .dropdown-toggle.btn-primary {
+  background: #3b6845;
+  color: white;
+	border-color: black;
+}
+.btn-success.outline:active, .btn-success.outline.active {
+  background: #3b6845;
+  border-color: white;
+	color: white;
+	box-shadow: none;
+}
+
+
+
+.relativepos{
+  position: relative;
+}
