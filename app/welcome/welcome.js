@@ -9,26 +9,34 @@ angular.module('webApp.welcome', ['ngRoute', 'firebase'])
 	});
 }])
 
-.controller('WelcomeCtrl', ['$scope', 'CommonProp', '$firebaseArray', '$firebaseObject', '$location', function($scope, CommonProp, $firebaseArray, $firebaseObject, $location){
+.controller('WelcomeCtrl', ['$scope', 'CommonProp', '$firebaseArray', '$firebaseObject', '$location', function($scope, CommonProp, $firebaseArray, $firebaseObject, $location, user){
 	$scope.username = CommonProp.getUser();
 
 	if(!$scope.username){
 		$location.path('/home');
 	}
 
-	var ref = firebase.database().ref().child('Articles');
+
+		var user = firebase.auth().currentUser;
+		var uid;
+		if (user != null) {
+		  $scope.uid = user.uid;
+		}
+
+
+	var ref = firebase.database().ref().child($scope.uid + '/Articles');
 	$scope.articles = $firebaseArray(ref);
 
-	
+
 
 
 	$scope.editPost = function(id){
-		var ref = firebase.database().ref().child('Articles/' + id);
+		var ref = firebase.database().ref().child($scope.uid +'/Articles/' + id);
 		$scope.editPostData = $firebaseObject(ref);
 	};
 
 	$scope.updatePost = function(id){
-		var ref = firebase.database().ref().child('Articles/' + id);
+		var ref = firebase.database().ref().child(scope.uid +'/Articles/' + id);
 		ref.update({
 			title: $scope.editPostData.title,
 			post: $scope.editPostData.post

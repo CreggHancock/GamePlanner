@@ -17,10 +17,23 @@ angular.module('webApp.addPost', ['ngRoute', 'firebase'])
 		$location.path('/home');
 	}
 
-	var ref = firebase.database().ref().child('Articles');
+	var user = firebase.auth().currentUser;
+	var uid;
+	if (user != null) {
+	  $scope.uid = user.uid;
+	}
+
+
+	var ref = firebase.database().ref().child($scope.uid+'/Articles');
 	$scope.articles = $firebaseArray(ref);
 
+
+
+
+
+
 	$scope.createPost = function(){
+		var uid = $scope.uid;
 		var title = $scope.article.titleTxt;
 		var post = $scope.article.postTxt;
 		var dateStr = $scope.article.postDate.toString();
@@ -30,7 +43,8 @@ angular.module('webApp.addPost', ['ngRoute', 'firebase'])
 			title: title,
 			post: post,
 			date: date,
-			type: type
+			type: type,
+			uid: uid
 		}).then(function(ref){
 			console.log(ref);
 			$scope.success = true;
