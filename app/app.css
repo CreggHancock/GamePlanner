@@ -44,6 +44,19 @@ border-radius: 2px;
   background-color: #3b6845;
   color: white;
 }
+#gameSelector{
+  margin-top:10px;
+  width: 300px;
+  height: 35px;
+  background-color: black;
+  color: white;
+}
+#gameSelectLabel{
+  margin-left:600px;
+  float: right;
+  position: relative;
+}
+
 #taskTitle{
   font-size: 12px;
   color: #638b8e;

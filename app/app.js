@@ -6,7 +6,8 @@ angular.module('webApp', [
   'webApp.home',
   'webApp.register',
   'webApp.welcome',
-  'webApp.addPost'
+  'webApp.addPost',
+  'angular.filter'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
 

@@ -32,29 +32,35 @@
 		<div class="row">
 			<div class="col-md-5">
 				<div class="form-group" ng-class="{'has-error': postForm.titleTxt.$invalid && postForm.titleTxt.$touched}">
-					<label for="titleTxt">Task Title</label>
+					<label for="titleTxt">Task Title:</label>
 					<input type="text" name="titleTxt" class="form-control" placeholder="Title" ng-model="article.titleTxt" ng-minlength = "5" required="">
 					<small class="help-block" ng-show="postForm.titleTxt.$error.minlength && postForm.titleTxt.$touched">Please enter a valid title for task.</small>
 				</div>
 				<div class="form-group" ng-class="{'has-error': postForm.postTxt.$invalid && postForm.postTxt.$touched}">
-					<label for="postTxt">Description</label>
+					<label for="postTxt">Description:</label>
 					<textarea name="postTxt" class="form-control" placeholder="Post" ng-model="article.postTxt" ng-minlength="20" required=""></textarea>
 					<small class="help-block" ng-show="postForm.postTxt.$error.minlength && postForm.postTxt.$touched">Please enter a valid description.</small>
 				</div>
 				<div class="form-group">
-					<label for="postDate">Deadline</label>
+					<label for="postDate">Deadline:</label>
 					<input type="date" name="postDate" class="form-control" placeholder="Date" ng-model="article.postDate" required="">
 				</div>
 				<div class="form-group" >
-				<label for="postType">Field</label><br>
+				<label for="postType">Field:</label><br>
 				<div id="radio">&nbsp; Programming &nbsp;<input id="radio" type="radio" name="postType" value="Programming" ng-model="article.postType" checked>
- 				&nbsp;&nbsp; Art &nbsp;<input id="radio" type="radio" name="postType" value="Art" ng-model="article.postType" >
+ 				&nbsp;&nbsp; Graphics &nbsp;<input id="radio" type="radio" name="postType" value="Graphics" ng-model="article.postType" >
  				&nbsp;&nbsp;Design &nbsp;<input id="radio" type="radio" name="postType" value="Design" ng-model="article.postType" >
+				</div>
+				</div>
+				<div class="form-group">
+					<label for="gamePicker">Select A Game:</label>
+					<select id="gameSelector"  name = "gamePicker" class ="form-control" ng-options="article.game as article.game group by game for article in articles | unique:'game'" ng-model="article.gameTxt"><option disabled selected value="">Games</option></select>
+					<br><label for="gameTxt">Or Start A New One:</label><input type="text" name="gameTxt" class="form-control" placeholder="Game" ng-model="article.gameTxt">
 				</div>
 				<div class="form-group">
 					<button type="submit" class="btn btn-primary outline" ng-disabled="postForm.$invalid">Add Task</button>
 				</div>
-			</div>
+
 		</div>
 	</form>
 </div>

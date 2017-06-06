@@ -39,11 +39,13 @@ angular.module('webApp.addPost', ['ngRoute', 'firebase'])
 		var dateStr = $scope.article.postDate.toString();
 		var date = dateStr.slice(0,15);
 		var type = $scope.article.postType;
+		var game = $scope.article.gameTxt;
 		$scope.articles.$add({
 			title: title,
 			post: post,
 			date: date,
 			type: type,
+			game: game,
 			uid: uid
 		}).then(function(ref){
 			console.log(ref);

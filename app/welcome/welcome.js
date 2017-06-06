@@ -24,6 +24,8 @@ angular.module('webApp.welcome', ['ngRoute', 'firebase'])
 		}
 
 
+
+
 	var ref = firebase.database().ref().child($scope.uid + '/Articles');
 	$scope.articles = $firebaseArray(ref);
 
@@ -36,7 +38,7 @@ angular.module('webApp.welcome', ['ngRoute', 'firebase'])
 	};
 
 	$scope.updatePost = function(id){
-		var ref = firebase.database().ref().child(scope.uid +'/Articles/' + id);
+		var ref = firebase.database().ref().child($scope.uid +'/Articles/' + id);
 		ref.update({
 			title: $scope.editPostData.title,
 			post: $scope.editPostData.post
@@ -48,6 +50,9 @@ angular.module('webApp.welcome', ['ngRoute', 'firebase'])
 			console.log(error);
 		});
 	};
+
+
+
 
 	$scope.deleteCnf = function(article){
 		$scope.deleteArticle = article;
@@ -61,4 +66,7 @@ angular.module('webApp.welcome', ['ngRoute', 'firebase'])
 	$scope.logout = function(){
 		CommonProp.logoutUser();
 	}
+
+
+
 }])

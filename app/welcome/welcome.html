@@ -14,14 +14,18 @@
 			<li class="active"><a href="#/welcome">Home</a></li>
 			<li><a href="#/addPost">Add Task</a></li>
 			<li ng-click="logout()"><a href="#">Logout</a></li>
+			<li id="gameSelectLabel"><select id="gameSelector" placeholder="Game" name="gameSelector" class="form-control pull-right" ng-options="article.game as article.game for article in articles | unique:'game'" ng-model="gameName" > <option disabled selected value="">Games</option></select></li>
+
 		</ul>
+
 	</div>
 </nav>
 
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<h3>{{username}}'s GamePlanner</h3>
+
+			<h3>{{gameName}}</h3>
 		</div>
 	</div>
 	<div>
@@ -29,15 +33,17 @@
 </div>
 
 
+
 <div class="container relativepos">
 	<select id="typeSelector" class="form-control col-md-3" ng-model="tt">
-		<option value="">All</option>
-		<option value="Programming">Programming</option>
-		<option value="Art">Art</option>
-		<option value="Design">Design</option>
-	</select><br><br>
+			<option value="">All</option>
+			<option value="Programming">Programming</option>
+			<option value="Graphics">Graphics</option>
+			<option value="Design">Design</option>
+	</select>
+	<br><br>
 	<div "rowoverlay">
-		<div class="row" ng-repeat="article in articles| filter:tt | orderBy: 'date'">
+		<div class="row" ng-repeat="article in articles| filter: gameName | filter: tt | orderBy: 'date'">
 			<div id="tasks" class=" well well-sm">
 			<p id="taskTitle" class="pull-right">{{article.type}}</p>
 			<h4>{{article.title}}</h4>
@@ -89,6 +95,30 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-sm btn-danger" ng-click="deletePost(deleteArticle)">Delete</button>
+					<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div id="titleModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4>Name Your Game</h4>
+				</div>
+				<div class="modal-body">
+					<form role="form">
+						<div class="form-group">
+							<label for="title">Name</label>
+							<input type="text" name="title" class="form-control" ng-model="editTitleData.title" />
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-sm btn-primary" ng-click="nameGame(editTitleData.title)">Submit</button>
 					<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Cancel</button>
 				</div>
 			</div>
